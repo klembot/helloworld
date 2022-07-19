@@ -19,8 +19,16 @@ export const App = () => {
 		return <p>Could not get location</p>;
 	}
 
-	if (!latitude || !longitude || conditionsLoading || forecastLoading) {
-		return <p>Loading...</p>;
+	if (!latitude || !longitude) {
+		return <p>Locating...</p>;
+	}
+
+	if (conditionsLoading) {
+		return <p>Fetching current conditions...</p>;
+	}
+
+	if (forecastLoading) {
+		return <p>Fetching forecast...</p>;
 	}
 
 	const formatUpdate = forecastData
