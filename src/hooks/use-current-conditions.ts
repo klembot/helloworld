@@ -27,10 +27,10 @@ export interface CurrentConditionsResponse {
 		windDirection: CurrentConditionsValue;
 		windGust: CurrentConditionsValue;
 		windSpeed: CurrentConditionsValue;
-	}
+	};
 }
 
-export function useCurrentConditions(latitude: number, longitude: number) {
+export function useCurrentConditions(latitude?: number, longitude?: number) {
 	const {data: gridData, isLoading: gridLoading} = useForecastGrid(
 		latitude,
 		longitude
@@ -38,7 +38,7 @@ export function useCurrentConditions(latitude: number, longitude: number) {
 	const {data: stationData, isLoading: stationLoading} =
 		useFetch<StationListResponse>(
 			`https://api.weather.gov/gridpoints/${gridData?.properties.cwa}/${gridData?.properties.gridX},${gridData?.properties.gridY}/stations`,
-			{depends: [!gridLoading]}
+			{depends: [!!gridData]}
 		);
 
 	// console.log(stationData?.features[0].properties.stationIdentifier);

@@ -8,6 +8,9 @@ export interface ForecastGridResponse {
 	}
 }
 
-export function useForecastGrid(latitude: number, longitude: number) {
-	return useFetch<ForecastGridResponse>(`https://api.weather.gov/points/${latitude},${longitude}`);
+export function useForecastGrid(latitude?: number, longitude?: number) {
+	return useFetch<ForecastGridResponse>(
+		`https://api.weather.gov/points/${latitude},${longitude}`,
+		{depends: [latitude, longitude]}
+	);
 }

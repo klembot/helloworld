@@ -8,8 +8,10 @@ export interface ForecastPeriodProps {
 export const ForecastPeriod = (props: ForecastPeriodProps) => {
 	const {item} = props;
 
-	return <div>
-		<h2>{item.name}</h2>
-		<p>{item.detailedForecast}</p>
-	</div>;
+	return (
+		<div>
+			<h1>{item.name}</h1>
+			<p>{item.detailedForecast}</p>
+		</div>
+	);
 }

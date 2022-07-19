@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {CurrentConditionsValue} from '../hooks/use-current-conditions';
-import {kmToMiles} from '../util/conversions';
+import {degreesToCompassDirections, kmToMiles} from '../util/conversions';
 
 export interface WindProps {
 	direction: CurrentConditionsValue;
@@ -15,7 +15,7 @@ export const Wind = (props: WindProps) => {
 
 	switch (props.direction.unitCode) {
 		case 'wmoUnit:degree_(angle)':
-			direction = `${props.direction.value}°`;
+			direction = degreesToCompassDirections(props.direction.value);
 			break;
 
 		default:
@@ -27,7 +27,7 @@ export const Wind = (props: WindProps) => {
 			gust = `${Math.round(kmToMiles(props.gust.value))} MPH`;
 			break;
 
-		case 'wmoUnit:km_h-1':
+		case 'wmoUnit:mi_h-1':
 			gust = `${Math.round(props.gust.value)} MPH`;
 
 		default:
@@ -39,7 +39,7 @@ export const Wind = (props: WindProps) => {
 			speed = `${Math.round(kmToMiles(props.speed.value))} MPH`;
 			break;
 
-		case 'wmoUnit:km_h-1':
+		case 'wmoUnit:mi_h-1':
 			speed = `${Math.round(props.speed.value)} MPH`;
 
 		default:
@@ -48,7 +48,7 @@ export const Wind = (props: WindProps) => {
 
 	return (
 		<span>
-			{direction} at {speed}
+			{direction} wind at {speed}
 			{props.gust.value > 0 && <>, gusting {gust}</>}
 		</span>
 	);

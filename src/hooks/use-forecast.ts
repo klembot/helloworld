@@ -33,7 +33,7 @@ export interface ForecastResponse {
 	};
 }
 
-export function useForecast(latitude: number, longitude: number) {
+export function useForecast(latitude?: number, longitude?: number) {
 	const {data: gridData, isLoading: gridLoading} = useForecastGrid(
 		latitude,
 		longitude
@@ -41,6 +41,6 @@ export function useForecast(latitude: number, longitude: number) {
 
 	return useFetch<ForecastResponse>(
 		`https://api.weather.gov/gridpoints/${gridData?.properties.cwa}/${gridData?.properties.gridX},${gridData?.properties.gridY}/forecast`,
-		{depends: [!gridLoading]}
+		{depends: [!!gridData]}
 	);
 }

@@ -22,15 +22,19 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 
 	return (
 		<>
-			<h1>Current Conditions</h1>
-			<p>As of {formatUpdate} ago</p>
+			<h1>Now</h1>
 			<p>{conditions.textDescription}</p>
 			<p>
 				<Temperature {...conditions.temperature} />
 			</p>
 			<p>
-				Wind <Wind direction={conditions.windDirection} gust={conditions.windGust} speed={conditions.windSpeed} />
+				<Wind
+					direction={conditions.windDirection}
+					gust={conditions.windGust}
+					speed={conditions.windSpeed}
+				/>
 			</p>
+			<p>As of {formatUpdate} ago</p>
 		</>
 	);
 };
