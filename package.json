@@ -9,10 +9,12 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"clsx": "^1.2.1",
 		"date-fns": "^2.28.0",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-fetch-hook": "^1.9.5",
+		"reasonable-colors": "^0.4.0",
 		"suncalc": "^1.9.0"
 	},
 	"devDependencies": {

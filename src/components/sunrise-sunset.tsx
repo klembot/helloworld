@@ -50,9 +50,9 @@ export const SunriseSunset = (props: SunriseSunsetProps) => {
 	);
 
 	return (
-		<p>
+		<span>
 			Sunrise in {formatDistanceToNow(tomorrowTimes.sunrise)}, at{' '}
 			{format(tomorrowTimes.sunrise, 'p')}
-		</p>
+		</span>
 	);
 };

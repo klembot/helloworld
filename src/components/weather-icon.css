@@ -1,0 +1,48 @@
+.weather-icon {
+	align-items: center;
+	display: grid;
+	height: 60px;
+	justify-content: center;
+	position: relative;
+	width: 60px;
+}
+
+.weather-icon .icon {
+	align-items: center;
+	display: grid;
+	font-size: 48px;
+	height: 60px;
+	justify-content: center;
+	position: relative;
+	width: 60px;
+}
+
+.weather-icon.multiple .icon {
+	transform: scale(0.65);
+}
+
+.weather-icon.multiple .icon:first-child {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform-origin: top left;
+}
+
+.weather-icon.multiple .icon:nth-child(2) {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	transform-origin: bottom right;
+	z-index: 2;
+}
+
+.weather-icon.large {
+	height: 120px;
+	width: 120px;
+}
+
+.weather-icon.large .icon {
+	font-size: 100px;
+	height: 120px;
+	width: 120px;
+}
