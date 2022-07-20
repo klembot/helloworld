@@ -13,6 +13,10 @@ export const Wind = (props: WindProps) => {
 	let gust = '';
 	let speed = '';
 
+	if (props.speed.value === 0) {
+		return <span>Calm winds</span>;
+	}
+
 	switch (props.direction.unitCode) {
 		case 'wmoUnit:degree_(angle)':
 			direction = degreesToCompassDirections(props.direction.value);
