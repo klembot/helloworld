@@ -5,6 +5,7 @@ import {useForecast} from './hooks/use-forecast';
 import {useGeolocation} from './hooks/use-geolocation';
 import {formatDistance} from 'date-fns';
 import './app.css';
+import {SunriseSunset} from './components/sunrise-sunset';
 
 export const App = () => {
 	const {error: locationError, latitude, longitude} = useGeolocation();
@@ -41,6 +42,7 @@ export const App = () => {
 	return (
 		<main>
 			<CurrentConditions conditions={conditionsData?.properties} />
+			<SunriseSunset latitude={latitude} longitude={longitude} />
 			{forecastData?.properties.periods.map((period, index) => (
 				<ForecastPeriod key={index} item={period} />
 			))}

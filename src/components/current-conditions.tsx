@@ -1,8 +1,7 @@
-import {formatDistance} from 'date-fns';
-import * as React from 'react';
+import {formatDistanceToNow} from 'date-fns';
 import {CurrentConditionsResponse} from '../hooks/use-current-conditions';
 import {Temperature} from './temperature';
-import { Wind } from './wind';
+import {Wind} from './wind';
 
 export interface CurrentConditionsProps {
 	conditions?: CurrentConditionsResponse['properties'];
@@ -14,11 +13,6 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 	if (!conditions) {
 		return null;
 	}
-
-	const formatUpdate = formatDistance(
-		new Date(conditions.timestamp),
-		new Date()
-	);
 
 	return (
 		<>
@@ -34,7 +28,9 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 					speed={conditions.windSpeed}
 				/>
 			</p>
-			<p>As of {formatUpdate} ago</p>
+			<p>
+				As of {formatDistanceToNow(new Date(conditions.timestamp))} ago
+			</p>
 		</>
 	);
 };
