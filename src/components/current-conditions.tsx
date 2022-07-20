@@ -5,10 +5,11 @@ import {Wind} from './wind';
 
 export interface CurrentConditionsProps {
 	conditions?: CurrentConditionsResponse['properties'];
+	stationName?: string;
 }
 
 export const CurrentConditions = (props: CurrentConditionsProps) => {
-	const {conditions} = props;
+	const {conditions, stationName} = props;
 
 	if (!conditions) {
 		return null;
@@ -16,7 +17,7 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 
 	return (
 		<>
-			<h1>Now</h1>
+			<h1>Conditions at {stationName}</h1>
 			<p>{conditions.textDescription}</p>
 			<p>
 				<Temperature {...conditions.temperature} />

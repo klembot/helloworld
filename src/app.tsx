@@ -13,8 +13,11 @@ export const App = () => {
 		latitude,
 		longitude
 	);
-	const {isLoading: conditionsLoading, data: conditionsData} =
-		useCurrentConditions(latitude, longitude);
+	const {
+		isLoading: conditionsLoading,
+		data: conditionsData,
+		station
+	} = useCurrentConditions(latitude, longitude);
 
 	if (locationError) {
 		return <p>Could not get location</p>;
@@ -41,7 +44,10 @@ export const App = () => {
 
 	return (
 		<main>
-			<CurrentConditions conditions={conditionsData?.properties} />
+			<CurrentConditions
+				conditions={conditionsData?.properties}
+				stationName={station?.name}
+			/>
 			<SunriseSunset latitude={latitude} longitude={longitude} />
 			{forecastData?.properties.periods.map((period, index) => (
 				<ForecastPeriod key={index} item={period} />

@@ -4,6 +4,7 @@ import {useForecastGrid} from './use-forecast-grid';
 export interface StationListResponse {
 	features: {
 		properties: {
+			name: string;
 			stationIdentifier: string;
 		};
 	}[];
@@ -41,12 +42,13 @@ export function useCurrentConditions(latitude?: number, longitude?: number) {
 			{depends: [!!gridData]}
 		);
 
-	// console.log(stationData?.features[0].properties.stationIdentifier);
-
 	const stationId = stationData?.features[0].properties.stationIdentifier;
 
-	return useFetch<CurrentConditionsResponse>(
-		`https://api.weather.gov/stations/${stationId}/observations/latest`,
-		{depends: [!stationLoading, stationId]}
-	);
+	return {
+		...useFetch<CurrentConditionsResponse>(
+			`https://api.weather.gov/stations/${stationId}/observations/latest`,
+			{depends: [!stationLoading, stationId]}
+		),
+		station: stationData?.features[0].properties
+	};
 }
