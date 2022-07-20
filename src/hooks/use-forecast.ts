@@ -39,8 +39,11 @@ export function useForecast(latitude?: number, longitude?: number) {
 		longitude
 	);
 
-	return useFetch<ForecastResponse>(
-		`https://api.weather.gov/gridpoints/${gridData?.properties.cwa}/${gridData?.properties.gridX},${gridData?.properties.gridY}/forecast`,
-		{depends: [!!gridData]}
-	);
+	return {
+		...useFetch<ForecastResponse>(
+			`https://api.weather.gov/gridpoints/${gridData?.properties.cwa}/${gridData?.properties.gridX},${gridData?.properties.gridY}/forecast`,
+			{depends: [!!gridData]}
+		),
+		office: gridData?.properties.cwa
+	};
 }

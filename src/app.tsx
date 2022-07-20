@@ -7,13 +7,15 @@ import {formatDistance} from 'date-fns';
 import './app.css';
 import {SunriseSunset} from './components/sunrise-sunset';
 import {RadarLink} from './components/radar-link';
+import {ForecastDiscussionLink} from './components/forecast-discussion-link';
 
 export const App = () => {
 	const {error: locationError, latitude, longitude} = useGeolocation();
-	const {isLoading: forecastLoading, data: forecastData} = useForecast(
-		latitude,
-		longitude
-	);
+	const {
+		isLoading: forecastLoading,
+		data: forecastData,
+		office
+	} = useForecast(latitude, longitude);
 	const {
 		isLoading: conditionsLoading,
 		data: conditionsData,
@@ -54,6 +56,7 @@ export const App = () => {
 			{forecastData?.properties.periods.map((period, index) => (
 				<ForecastPeriod key={index} item={period} />
 			))}
+			{office && <ForecastDiscussionLink station={office} />}
 			<p>Forecast updated {formatUpdate} ago</p>
 		</main>
 	);
