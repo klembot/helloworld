@@ -27,7 +27,7 @@ export const Forecast = ({latitude, longitude}: ForecastProps) => {
 			))}
 			{office && <ForecastDiscussionLink station={office} />}
 			{data?.properties.updateTime && (
-				<p>
+				<p className="updated-at">
 					Forecast updated{' '}
 					{formatDistanceToNow(new Date(data.properties.updateTime))}{' '}
 					ago

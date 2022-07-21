@@ -17,7 +17,9 @@ export const App = () => {
 	return (
 		<main>
 			<CurrentConditions latitude={latitude} longitude={longitude} />
-			<RadarLink latitude={latitude} longitude={longitude} />
+			<div style={{margin: '0 var(--margin-small)'}}>
+				<RadarLink latitude={latitude} longitude={longitude} />
+			</div>
 			<Forecast latitude={latitude} longitude={longitude} />
 		</main>
 	);

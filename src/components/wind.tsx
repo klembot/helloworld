@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {CurrentConditionsValue} from '../hooks/use-current-conditions';
 import {degreesToCompassDirections, kmToMiles} from '../util/conversions';
+import {Arrow} from './arrow';
+import './wind.css';
 
 export interface WindProps {
 	direction: CurrentConditionsValue;
@@ -51,9 +53,10 @@ export const Wind = (props: WindProps) => {
 	}
 
 	return (
-		<span>
+		<div className="wind">
+			<Arrow direction={props.direction.value} />
 			{direction} wind at {speed}
 			{props.gust.value > 0 && <>, gusting {gust}</>}
-		</span>
+		</div>
 	);
 };

@@ -6,6 +6,10 @@
 	padding: var(--margin-medium);
 }
 
+.forecast-period .text {
+	align-self: center;
+}
+
 .forecast-period h1 {
 	margin: 0;
 }

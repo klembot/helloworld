@@ -1,4 +1,4 @@
-import {formatDistanceToNow} from 'date-fns';
+import {format, formatDistanceToNow} from 'date-fns';
 import {useCurrentConditions} from '../hooks/use-current-conditions';
 import {SunriseSunset} from './sunrise-sunset';
 import {Temperature} from './temperature';
@@ -28,27 +28,25 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 
 	return (
 		<div className="current-conditions">
-			<h1>{station?.name}</h1>
-			<div className="details">
+			<div className="at-a-glance">
 				<WeatherIcon icon={data.properties.icon} size="large" />
 				<div className="text">
-					<div>{data.properties.textDescription}</div>
 					<Temperature {...data.properties.temperature} />
+					<div>{data.properties.textDescription}</div>
 					<Wind
 						direction={data.properties.windDirection}
 						gust={data.properties.windGust}
 						speed={data.properties.windSpeed}
 					/>
-					<SunriseSunset latitude={latitude} longitude={longitude} />
-					<div>
-						As of{' '}
-						{formatDistanceToNow(
-							new Date(data.properties.timestamp)
-						)}{' '}
-						ago
-					</div>
 				</div>
 			</div>
+			{station && (
+				<div className="observed-at">
+					Observed at {station?.name} at{' '}
+					{format(new Date(data.properties.timestamp), 'p')}
+				</div>
+			)}
+			<SunriseSunset latitude={latitude} longitude={longitude} />
 		</div>
 	);
 };

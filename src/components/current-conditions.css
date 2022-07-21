@@ -2,19 +2,24 @@
 	padding: var(--margin-small);
 }
 
-.current-conditions h1 {
-	margin: 0;
-}
-
-.current-conditions .details {
+.current-conditions .at-a-glance {
 	align-items: center;
-	display: grid;
+	display: flex;
+	grid-gap: var(--margin-medium);
 	justify-content: center;
-	grid-template-columns: 120px 1fr;
-	margin: var(--margin-medium) 0;
 }
 
-.current-conditions .details .text {
-	display: flex;
-	flex-direction: column;
+.current-conditions .at-a-glance .text {
+	font-size: 24px;
+}
+
+.current-conditions .observed-at {
+	font-size: 90%;
+	text-align: center;
+}
+
+.current-conditions .sunrise-sunset {
+	font-size: 90%;
+	margin: var(--margin-medium);
+	text-align: center;
 }

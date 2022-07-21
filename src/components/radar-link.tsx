@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {LinkButton} from './link-button';
 
 export interface RadarLinkProps {
 	latitude: number;
@@ -20,12 +21,12 @@ export const RadarLink = (props: RadarLinkProps) => {
 	};
 
 	return (
-		<a
+		<LinkButton
 			href={`https://radar.weather.gov/?settings=v1_${window.btoa(
 				JSON.stringify(settings)
 			)}`}
 		>
 			Weather Radar
-		</a>
+		</LinkButton>
 	);
 };

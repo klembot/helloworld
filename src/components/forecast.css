@@ -6,3 +6,14 @@
 .forecast .forecast-period + .forecast-period {
 	border-top: 1px solid var(--color-gray-2);
 }
+
+.forecast .updated-at {
+	font-size: 90%;
+	text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+	.forecast .forecast-period + .forecast-period {
+		border-top: 1px solid var(--color-gray-6);
+	}	
+}
