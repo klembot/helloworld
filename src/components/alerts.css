@@ -1,9 +1,0 @@
-.alerts {
-	display: grid;
-	grid-gap: var(--margin-medium);
-	padding: var(--margin-medium);
-}
-
-.alerts.empty {
-	text-align: center;
-}

@@ -1,10 +1,10 @@
-import {format, formatDistanceToNow} from 'date-fns';
+import {format} from 'date-fns';
+import {Col, Row} from 'react-bootstrap';
 import {useCurrentConditions} from '../hooks/use-current-conditions';
 import {SunriseSunset} from './sunrise-sunset';
 import {Temperature} from './temperature';
 import {WeatherIcon} from './weather-icon';
 import {Wind} from './wind';
-import './current-conditions.css';
 
 export interface CurrentConditionsProps {
 	latitude: number;
@@ -27,26 +27,45 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
 	}
 
 	return (
-		<div className="current-conditions">
-			<div className="at-a-glance">
-				<WeatherIcon icon={data.properties.icon} size="large" />
-				<div className="text">
+		<>
+			<Row className="align-items-center py-2">
+				<Col xs="4">
+					<WeatherIcon icon={data.properties.icon} />
+				</Col>
+				<Col>
 					<Temperature {...data.properties.temperature} />
+					<div>
+						{Math.round(data.properties.relativeHumidity.value)}%
+						Humidity
+					</div>
 					<div>{data.properties.textDescription}</div>
 					<Wind
 						direction={data.properties.windDirection}
 						gust={data.properties.windGust}
 						speed={data.properties.windSpeed}
 					/>
-				</div>
-			</div>
+				</Col>
+			</Row>
 			{station && (
-				<div className="observed-at">
-					Observed at {station?.name} at{' '}
-					{format(new Date(data.properties.timestamp), 'p')}
-				</div>
+				<Row>
+					<Col className="text-center lh-1">
+						<small>
+							Observed at {station?.name} at{' '}
+							{format(new Date(data.properties.timestamp), 'p')}
+						</small>
+					</Col>
+				</Row>
 			)}
-			<SunriseSunset latitude={latitude} longitude={longitude} />
-		</div>
+			<Row>
+				<Col className="text-center lh-1">
+					<small>
+						<SunriseSunset
+							latitude={latitude}
+							longitude={longitude}
+						/>
+					</small>
+				</Col>
+			</Row>
+		</>
 	);
 };

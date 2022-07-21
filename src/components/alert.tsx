@@ -1,27 +1,28 @@
 import * as React from 'react';
-import {AlertFeature} from '../hooks/use-alerts';
-import './alert.css';
+import { Accordion } from 'react-bootstrap';
+import { ExclamationTriangle } from 'react-bootstrap-icons';
+import { AlertFeature } from '../hooks/use-alerts';
 
 export interface AlertProps {
-	alert: AlertFeature;
+  alert: AlertFeature;
+  eventKey: string;
 }
 
-export const Alert = ({alert}: AlertProps) => {
-	const [expanded, setExpanded] = React.useState(false);
-	const shortHeadline = alert.properties.headline.replace(/issued.*/, '');
+export const Alert = ({ alert, eventKey }: AlertProps) => {
+  const shortHeadline = alert.properties.headline.replace(/issued.*/, '');
 
-	return (
-		<div className="alert">
-			<button onClick={() => setExpanded(value => !value)}>
-				{expanded ? '▼ ' : '▶ '}
-				<span className="label">{shortHeadline}</span>
-			</button>
-			{expanded && (
-				<div className="details">
-					<pre>{alert.properties.description}</pre>
-					<pre>{alert.properties.instruction}</pre>
-				</div>
-			)}
-		</div>
-	);
+  return (
+    <Accordion.Item eventKey={eventKey}>
+      <Accordion.Header>
+        <ExclamationTriangle className="m-1" />
+        {shortHeadline}
+      </Accordion.Header>
+      <Accordion.Body>
+        <div className="details">
+          <pre>{alert.properties.description}</pre>
+          <pre>{alert.properties.instruction}</pre>
+        </div>
+      </Accordion.Body>
+    </Accordion.Item>
+  );
 };

@@ -1,7 +1,5 @@
-import * as React from 'react';
+import {Accordion, Col, Row} from 'react-bootstrap';
 import {useAlerts} from '../hooks/use-alerts';
-import {uniqBy} from 'lodash';
-import './alerts.css';
 import {Alert} from './alert';
 
 export interface AlertsProps {
@@ -17,14 +15,22 @@ export const Alerts = ({latitude, longitude}: AlertsProps) => {
 	}
 
 	if (data?.features.length === 0) {
-		return <div className="alerts empty">No alerts</div>;
+		return <p className="text-center">No alerts</p>;
 	}
 
 	return (
-		<div className="alerts">
-			{data?.features.map(alert => (
-				<Alert key={alert.id} alert={alert} />
-			))}
-		</div>
+		<Row>
+			<Col>
+				<Accordion>
+					{data?.features.map((alert, index) => (
+						<Alert
+							key={alert.id}
+							alert={alert}
+							eventKey={index.toString()}
+						/>
+					))}
+				</Accordion>
+			</Col>
+		</Row>
 	);
 };

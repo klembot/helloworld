@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {LinkButton} from './link-button';
+import {Button, Col, Row} from 'react-bootstrap';
 
 export interface RadarLinkProps {
 	latitude: number;
@@ -21,12 +20,19 @@ export const RadarLink = (props: RadarLinkProps) => {
 	};
 
 	return (
-		<LinkButton
-			href={`https://radar.weather.gov/?settings=v1_${window.btoa(
-				JSON.stringify(settings)
-			)}`}
-		>
-			Weather Radar
-		</LinkButton>
+		<Row>
+			<Col>
+				<div className="d-grid">
+					<Button
+						href={`https://radar.weather.gov/?settings=v1_${window.btoa(
+							JSON.stringify(settings)
+						)}`}
+						variant="outline-primary"
+					>
+						Weather Radar
+					</Button>
+				</div>
+			</Col>
+		</Row>
 	);
 };

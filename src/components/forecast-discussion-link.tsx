@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {LinkButton} from './link-button';
+import {Button, Col, Row} from 'react-bootstrap';
 
 export interface ForecastDiscussionLinkProps {
 	station: string;
@@ -7,10 +6,17 @@ export interface ForecastDiscussionLinkProps {
 
 export const ForecastDiscussionLink = (props: ForecastDiscussionLinkProps) => {
 	return (
-		<LinkButton
-			href={`https://forecast.weather.gov/product.php?site=${props.station}&issuedby=${props.station}&product=AFD&format=txt&version=1&glossary=1`}
-		>
-			Forecast Discussion
-		</LinkButton>
+		<Row>
+			<Col>
+				<div className="d-grid">
+					<Button
+						href={`https://forecast.weather.gov/product.php?site=${props.station}&issuedby=${props.station}&product=AFD&format=txt&version=1&glossary=1`}
+						variant="outline-primary"
+					>
+						Forecast Discussion
+					</Button>
+				</div>
+			</Col>
+		</Row>
 	);
 };
