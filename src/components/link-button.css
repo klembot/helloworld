@@ -1,17 +1,6 @@
 .link-button {
-	background-color: var(--color-blue-1);
-	border: 1px solid var(--color-blue-4);
-	border-radius: var(--margin-medium);
 	color: var(--color-blue-4);
 	display: block;
-	padding: var(--margin-medium);
 	text-align: center;
-}
-
-@media (prefers-color-scheme: dark) {
-	.link-button {
-		background-color: var(--color-blue-6);
-		border-color: var(--color-blue-3);
-		color: var(--color-blue-4);
-	}	
+	text-decoration: underline;
 }
