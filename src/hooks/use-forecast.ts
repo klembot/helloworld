@@ -34,10 +34,7 @@ export interface ForecastResponse {
 }
 
 export function useForecast(latitude?: number, longitude?: number) {
-	const {data: gridData, isLoading: gridLoading} = useForecastGrid(
-		latitude,
-		longitude
-	);
+	const {data: gridData} = useForecastGrid(latitude, longitude);
 
 	return {
 		...useFetch<ForecastResponse>(

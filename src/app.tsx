@@ -1,3 +1,4 @@
+import {Alerts} from './components/alerts';
 import {CurrentConditions} from './components/current-conditions';
 import {Forecast} from './components/forecast';
 import {RadarLink} from './components/radar-link';
@@ -17,6 +18,7 @@ export const App = () => {
 	return (
 		<main>
 			<CurrentConditions latitude={latitude} longitude={longitude} />
+			<Alerts latitude={latitude} longitude={longitude} />
 			<div style={{margin: '0 var(--margin-small)'}}>
 				<RadarLink latitude={latitude} longitude={longitude} />
 			</div>
