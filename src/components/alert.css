@@ -1,0 +1,24 @@
+.weather-alert button {
+	appearance: none;
+	align-items: center;
+	background: none;
+	border: none;
+	color: var(--color-gray-4);
+	cursor: pointer;
+	display: flex;
+	grid-gap: calc(var(--grid-size) / 2);
+	padding: 0;
+}
+
+.weather-alert button .text {
+	color: var(--color-blue-4);
+	font-family: var(--font-system);
+	font-size: var(--font-medium);
+	text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+	.weather-alert button {
+		color: var(--color-gray-2);
+	}
+}

@@ -1,22 +1,29 @@
 .weather-icon {
-	align-items: center;
-	display: grid;
-	grid-gap: 40px;
+	color: var(--color-gray-3);
+	position: relative;
 }
 
 .weather-icon .icon {
 	position: relative;
 }
 
-.weather-icon .icon .badge {
-	bottom: 0;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 100%);
-	z-index: 1;
-}
-
 .weather-icon .icon svg {
 	height: auto;
 	width: 100%;
+}
+
+.weather-icon.multiple .icon {
+	height: 55%;
+	position: absolute;
+	width: 55%;
+}
+
+.weather-icon.multiple .icon:first-child {
+	left: 0;
+	top: 0;
+}
+
+.weather-icon.multiple .icon:nth-child(2) {
+	top: 45%;
+	left: 45%;
 }

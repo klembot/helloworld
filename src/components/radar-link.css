@@ -1,0 +1,8 @@
+.radar-link {
+	font-size: var(--font-small);
+	text-align: center;
+}
+
+.radar-link svg {
+	margin-left: calc(var(--grid-size) / 2);
+}

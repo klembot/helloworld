@@ -1,0 +1,3 @@
+.forecast-discussion-link svg {
+	margin-left: calc(var(--grid-size) / 2);
+}

@@ -1,0 +1,13 @@
+.forecast {
+	display: grid;
+	grid-gap: calc(var(--grid-size) * 2);
+}
+
+.forecast .discussion {
+	text-align: center;
+}
+
+.forecast .updated {
+	font-size: var(--font-small);
+	text-align: center;
+}

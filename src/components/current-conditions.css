@@ -1,0 +1,13 @@
+.current-conditions {
+	align-items: center;
+	display: grid;
+	font-size: var(--font-large);
+	grid-gap: var(--grid-size);
+	grid-template-columns: 20% 1fr;
+}
+
+.current-conditions .station {
+	font-size: var(--font-small);
+	grid-column: 1 / span 2;
+	text-align: center;
+}

@@ -1,0 +1,29 @@
+.forecast-period {
+	align-items: center;
+	display: grid;
+	grid-gap: var(--grid-size);
+	grid-template-columns: 50px 1fr;
+}
+
+.forecast-period .weather-icon {
+	height: 50px;
+	width: 50px;
+}
+
+.forecast-period .summary {
+	display: grid;
+	column-gap: calc(var(--grid-size) / 2); 
+	grid-template-columns: auto 1fr;
+}
+
+.forecast-period .summary .title {
+	font-weight: bold;
+}
+
+.forecast-period .summary .short-forecast {
+	grid-column: 1 / span 2;
+}
+
+.forecast-period .long-forecast {
+	display: none;
+}

@@ -1,6 +1,6 @@
-import {Card, Col, Row} from 'react-bootstrap';
 import {ForecastResponsePeriod} from '../hooks/use-forecast';
 import {WeatherIcon} from './weather-icon';
+import './forecast-period.css';
 
 export interface ForecastPeriodProps {
   item: ForecastResponsePeriod;
@@ -8,21 +8,18 @@ export interface ForecastPeriodProps {
 
 export const ForecastPeriod = (props: ForecastPeriodProps) => {
   const {item} = props;
-  const className = item.isDaytime
-    ? 'bg-primary text-white'
-    : 'bg-secondary text-white';
 
   return (
-    <Card body>
-      <Row>
-        <Col xs={3}>
-          <WeatherIcon icon={item.icon} />
-        </Col>
-        <Col>
-          <Card.Title>{item.name}</Card.Title>
-          <Card.Text>{item.detailedForecast}</Card.Text>
-        </Col>
-      </Row>
-    </Card>
+    <div className="forecast-period">
+      <WeatherIcon icon={item.icon} />
+      <div className="summary">
+        <div className="title">{item.name}</div>
+        <div className="temperature">
+          {item.temperature}&deg; {item.temperatureUnit}
+        </div>
+        <div className="short-forecast">{item.shortForecast}</div>
+      </div>
+      <div className="long-forecast">{item.detailedForecast}</div>
+    </div>
   );
 };

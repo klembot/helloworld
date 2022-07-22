@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {Badge} from 'react-bootstrap';
+import {uniq} from 'lodash';
 import {
   Cloud,
   CloudFog,
@@ -13,6 +13,7 @@ import {
   CloudSun,
   Hurricane,
   MoonStars,
+  QuestionCircle,
   Sun,
   ThermometerSnow,
   ThermometerSun,
@@ -125,26 +126,33 @@ export const WeatherIcon = ({icon}: WeatherIconProps) => {
     .split('/');
 
   if (iconType in iconMappings) {
-    return (
-      <div className="weather-icon">
-        {iconKeys.map(iconKey => {
-          const [icon, percent] = iconKey.split(',');
-          const mappedIcon = (iconMappings as any)[iconType][icon] ?? '❓';
+    const icons = uniq(
+      iconKeys.map(iconKey => {
+        const [icon] = iconKey.split(',');
 
-          return (
-            <div
-              className={clsx('icon', {'has-percent': !!percent})}
-              key={iconKey}
-            >
-              {mappedIcon}
-              {percent && <Badge>{percent}%</Badge>}
-            </div>
-          );
+        return (iconMappings as any)[iconType][icon] ?? <QuestionCircle />;
+      })
+    );
+
+    return (
+      <div
+        className={clsx('weather-icon', {
+          multiple: icons.length > 1
         })}
+      >
+        {icons.map(icon => (
+          <div className="icon">{icon}</div>
+        ))}
       </div>
     );
   }
 
   console.error(`Don't know how to handle icon type ${iconType}`);
-  return <span className="weather-icon">❓</span>;
+  return (
+    <div className="weather-icon">
+      <div className="icon">
+        <QuestionCircle />
+      </div>
+    </div>
+  );
 };

@@ -9,10 +9,18 @@ export const Temperature = (props: TemperatureProps) => {
 
 	switch (unitCode) {
 		case 'wmoUnit:degC':
-			return <span>{Math.round(celsiusToFahrenheit(value))}&deg; F</span>;
+			return (
+        <span>
+          <strong>{Math.round(celsiusToFahrenheit(value))}</strong>&deg; F
+        </span>
+      );
 
 		case 'wmoUnit:degF':
-			return <span>{Math.round(value)}&deg; F</span>;
+			return (
+        <span>
+          <strong>{Math.round(value)}</strong>&deg; F
+        </span>
+      );
 
 		default:
 			return (

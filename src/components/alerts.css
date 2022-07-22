@@ -1,0 +1,4 @@
+.weather-alerts {
+	display: grid;
+	grid-gap: var(--grid-size);
+}
