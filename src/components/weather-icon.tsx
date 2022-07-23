@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import {uniq} from 'lodash';
 import {
+  ArrowRight,
   Cloud,
   CloudFog,
   CloudHail,
@@ -126,23 +126,50 @@ export const WeatherIcon = ({icon}: WeatherIconProps) => {
     .split('/');
 
   if (iconType in iconMappings) {
-    const icons = uniq(
-      iconKeys.map(iconKey => {
-        const [icon] = iconKey.split(',');
+    const {icons, percents} = iconKeys.reduce<{
+      icons: React.ReactElement[];
+      percents: string[];
+    }>(
+      (result, iconKey) => {
+        const [icon, percent] = iconKey.split(',');
+        const mappedIcon = (iconMappings as any)[iconType][icon] ?? (
+          <QuestionCircle />
+        );
 
-        return (iconMappings as any)[iconType][icon] ?? <QuestionCircle />;
-      })
+        if (!result.icons.includes(mappedIcon)) {
+          result.icons = [...result.icons, mappedIcon];
+        }
+
+        if (percent && !result.percents.includes(percent)) {
+          result.percents = [...result.percents, percent];
+        }
+
+        return result;
+      },
+      {
+        icons: [],
+        percents: []
+      }
     );
 
     return (
       <div
         className={clsx('weather-icon', {
+          'has-percent': percents.length > 0,
           multiple: icons.length > 1
         })}
       >
         {icons.map(icon => (
           <div className="icon">{icon}</div>
         ))}
+        {percents.length == 1 && <div className="percent">{percents[0]}%</div>}
+        {percents.length == 2 && (
+          <div className="percent">
+            {percents[0]}
+            <ArrowRight />
+            {percents[1]}%
+          </div>
+        )}
       </div>
     );
   }

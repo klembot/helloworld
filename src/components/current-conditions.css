@@ -3,7 +3,7 @@
 	display: grid;
 	font-size: var(--font-large);
 	grid-gap: var(--grid-size);
-	grid-template-columns: 20% 1fr;
+	grid-template-columns: 100px 1fr;
 }
 
 .current-conditions .station {

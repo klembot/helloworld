@@ -12,6 +12,23 @@
 	width: 100%;
 }
 
+.weather-icon .percent {
+	align-items: center;
+	display: flex;
+	font-size: var(--font-extra-small);
+	font-weight: bold;
+	height: 20px;
+	justify-content: center;
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	right: 0;
+}
+
+.weather-icon.has-percent {
+	margin-bottom: 20px;
+}
+
 .weather-icon.multiple .icon {
 	height: 55%;
 	position: absolute;

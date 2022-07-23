@@ -1,6 +1,7 @@
 @import 'reasonable-colors/reasonable-colors.css';
 
 :root {
+	--font-extra-small: 12px;
 	--font-large: 24px;
 	--font-medium: 16px;
 	--font-small: 14px;
