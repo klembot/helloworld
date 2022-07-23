@@ -13,11 +13,11 @@ export const Forecast = ({latitude, longitude}: ForecastProps) => {
   const {error, isLoading, data, office} = useForecast(latitude, longitude);
 
   if (error) {
-    return <p>Could not load forecast (try reloading)</p>;
+    return <p style={{textAlign: 'center'}}>Couldn't get forecast.</p>;
   }
 
   if (isLoading || !data) {
-    return <p>Loading forecast...</p>;
+    return <p style={{textAlign: 'center'}}>Loading forecast...</p>;
   }
 
   return (

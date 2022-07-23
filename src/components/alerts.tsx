@@ -8,10 +8,14 @@ export interface AlertsProps {
 }
 
 export const Alerts = ({latitude, longitude}: AlertsProps) => {
-  const {isLoading, data} = useAlerts(latitude, longitude);
+  const {error, isLoading, data} = useAlerts(latitude, longitude);
+
+  if (error) {
+    return <p style={{textAlign: 'center'}}>Couldn't get alerts.</p>;
+  }
 
   if (isLoading) {
-    return <p>Loading alerts...</p>;
+    return <p style={{textAlign: 'center'}}>Loading alerts...</p>;
   }
 
   if (data?.features.length === 0) {

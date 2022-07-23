@@ -19,11 +19,13 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
   );
 
   if (error) {
-    return <p>Could not load current conditions (try reloading)</p>;
+    return (
+      <p style={{textAlign: 'center'}}>Couldn't get current conditions.</p>
+    );
   }
 
   if (isLoading || !data) {
-    return <p>Loading current conditions...</p>;
+    return <p style={{textAlign: 'center'}}>Loading current conditions...</p>;
   }
 
   return (
