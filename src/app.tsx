@@ -1,26 +1,47 @@
+import {Compass} from 'react-bootstrap-icons';
+import './app.css';
 import {Alerts} from './components/alerts';
 import {CurrentConditions} from './components/current-conditions';
 import {Forecast} from './components/forecast';
 import {RadarLink} from './components/radar-link';
-import {useGeolocation} from './hooks/use-geolocation';
-import './app.css';
 import {SunriseSunset} from './components/sunrise-sunset';
-import {ForecastDiscussionLink} from './components/forecast-discussion-link';
+import {useGeolocation} from './hooks/use-geolocation';
 
 export const App = () => {
-  const {error: locationError, latitude, longitude} = useGeolocation();
+  const {error, latitude, longitude} = useGeolocation();
 
-  if (locationError) {
+  if (error) {
     return (
-      <p>
-        Could not get your location. Check that you've enabled this in your
-        browser.
-      </p>
+      <div className="global-overlay">
+        <Compass />
+        <p>Couldn't get your location.</p>
+        {error === GeolocationPositionError.PERMISSION_DENIED && (
+          <p>
+            Permission denied. Do you have location services allowed in your
+            browser?
+          </p>
+        )}
+        {error === GeolocationPositionError.POSITION_UNAVAILABLE && (
+          <p>
+            Your browser couldn't get your location. Do you have location
+            services allowed?
+          </p>
+        )}
+        {error === GeolocationPositionError.TIMEOUT && (
+          <p>Getting your position timed out. Try again.</p>
+        )}
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
     );
   }
 
   if (!latitude || !longitude) {
-    return <p>Locating...</p>;
+    return (
+      <div className="global-overlay">
+        <Compass />
+        <p>Locating...</p>
+      </div>
+    );
   }
 
   return (
@@ -28,6 +49,7 @@ export const App = () => {
       <CurrentConditions latitude={latitude} longitude={longitude} />
       <SunriseSunset latitude={latitude} longitude={longitude} />
       <RadarLink latitude={latitude} longitude={longitude} />
+
       <Alerts latitude={latitude} longitude={longitude} />
       <Forecast latitude={latitude} longitude={longitude} />
     </main>

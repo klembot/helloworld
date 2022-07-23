@@ -3,3 +3,25 @@
 	grid-gap: calc(var(--grid-size) * 2);
 	padding: calc(var(--grid-size) * 2);
 }
+
+.global-overlay {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: var(--grid-size);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.global-overlay svg {
+	height: 100px;
+	width: 100px;
+}
+
+.global-overlay p {
+	text-align: center;
+}

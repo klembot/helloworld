@@ -21,6 +21,17 @@ body {
 	margin: 0;
 }
 
+button {
+	background: none;
+	border: 2px solid var(--color-blue-4);
+	border-radius: var(--grid-size);
+	color: var(--color-blue-4);
+	cursor: pointer;
+	font-family: var(--font-system);
+	font-size: var(--font-medium);
+	padding: var(--grid-size);
+}
+
 a {
 	color: var(--color-blue-4);
 }
