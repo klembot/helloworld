@@ -15,19 +15,19 @@ export const App = () => {
       <div className="global-overlay">
         <Compass />
         <p>Couldn't get your location.</p>
-        {error === GeolocationPositionError.PERMISSION_DENIED && (
+        {error.code === GeolocationPositionError.PERMISSION_DENIED && (
           <p>
             Permission denied. Do you have location services allowed in your
             browser?
           </p>
         )}
-        {error === GeolocationPositionError.POSITION_UNAVAILABLE && (
+        {error.code === GeolocationPositionError.POSITION_UNAVAILABLE && (
           <p>
             Your browser couldn't get your location. Do you have location
             services allowed?
           </p>
         )}
-        {error === GeolocationPositionError.TIMEOUT && (
+        {error.code === GeolocationPositionError.TIMEOUT && (
           <p>Getting your position timed out. Try again.</p>
         )}
         <button onClick={() => window.location.reload()}>Retry</button>
