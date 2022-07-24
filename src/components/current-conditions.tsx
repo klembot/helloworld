@@ -28,13 +28,23 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
     return <p style={{textAlign: 'center'}}>Loading current conditions...</p>;
   }
 
+  const feelsLikeTemperature =
+    data.properties.heatIndex ?? data.properties.windChill;
+
   return (
     <div className="current-conditions">
       <WeatherIcon icon={data.properties.icon} />
       <div className="conditions">
         <Temperature {...data.properties.temperature} />
+        {feelsLikeTemperature && (
+          <>
+            {' '}
+            / Feels like <Temperature {...feelsLikeTemperature} />
+          </>
+        )}
         <div>
-          {Math.round(data.properties.relativeHumidity.value)}% Humidity
+          <strong>{Math.round(data.properties.relativeHumidity.value)}%</strong>{' '}
+          Humidity
         </div>
         <div>{data.properties.textDescription}</div>
         <Wind

@@ -5,28 +5,30 @@ import {celsiusToFahrenheit} from '../util/conversions';
 export type TemperatureProps = CurrentConditionsValue;
 
 export const Temperature = (props: TemperatureProps) => {
-	const {unitCode, value} = props;
+  const {unitCode, value} = props;
 
-	switch (unitCode) {
-		case 'wmoUnit:degC':
-			return (
+  // Assume US unit :(
+
+  switch (unitCode) {
+    case 'wmoUnit:degC':
+      return (
         <span>
-          <strong>{Math.round(celsiusToFahrenheit(value))}</strong>&deg; F
+          <strong>{Math.round(celsiusToFahrenheit(value))}</strong>&deg;
         </span>
       );
 
-		case 'wmoUnit:degF':
-			return (
+    case 'wmoUnit:degF':
+      return (
         <span>
-          <strong>{Math.round(value)}</strong>&deg; F
+          <strong>{Math.round(value)}</strong>&deg;
         </span>
       );
 
-		default:
-			return (
-				<span>
-					<em>Unknown unit: {unitCode}</em>
-				</span>
-			);
-	}
-};
+    default:
+      return (
+        <span>
+          <em>Unknown unit: {unitCode}</em>
+        </span>
+      );
+  }
+};;
