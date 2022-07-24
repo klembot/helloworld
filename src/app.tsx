@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {Compass} from 'react-bootstrap-icons';
 import './app.css';
 import {Alerts} from './components/alerts';
@@ -5,10 +6,16 @@ import {CurrentConditions} from './components/current-conditions';
 import {Forecast} from './components/forecast';
 import {RadarLink} from './components/radar-link';
 import {SunriseSunset} from './components/sunrise-sunset';
+import {useCurrentConditions} from './hooks/use-current-conditions';
 import {useGeolocation} from './hooks/use-geolocation';
 
 export const App = () => {
   const {error, latitude, longitude} = useGeolocation();
+  const {data} = useCurrentConditions(latitude, longitude);
+  const themes = data?.properties.icon
+    .replace('https://api.weather.gov/icons/land/', '')
+    .replace(/\?.*$/, '')
+    .split('/');
 
   if (error) {
     return (
@@ -45,7 +52,7 @@ export const App = () => {
   }
 
   return (
-    <main className="app">
+    <main className={clsx('app', themes)}>
       <CurrentConditions latitude={latitude} longitude={longitude} />
       <SunriseSunset latitude={latitude} longitude={longitude} />
       <RadarLink latitude={latitude} longitude={longitude} />

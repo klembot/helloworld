@@ -1,5 +1,4 @@
 .weather-icon {
-	color: var(--color-gray-3);
 	position: relative;
 }
 
@@ -8,12 +7,14 @@
 }
 
 .weather-icon .icon svg {
+	fill: hsla(0, 0%, 100%, 0.5);
 	height: auto;
 	width: 100%;
 }
 
 .weather-icon .percent {
 	align-items: center;
+	color: hsla(0, 0%, 100%, 0.5);
 	display: flex;
 	font-size: var(--font-extra-small);
 	font-weight: bold;

@@ -159,8 +159,10 @@ export const WeatherIcon = ({icon}: WeatherIconProps) => {
           multiple: icons.length > 1
         })}
       >
-        {icons.map(icon => (
-          <div className="icon">{icon}</div>
+        {icons.map((icon, index) => (
+          <div className="icon" key={index}>
+            {icon}
+          </div>
         ))}
         {percents.length == 1 && <div className="percent">{percents[0]}%</div>}
         {percents.length == 2 && (

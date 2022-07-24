@@ -39,7 +39,7 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
         {feelsLikeTemperature && (
           <>
             {' '}
-            / Feels like <Temperature {...feelsLikeTemperature} />
+            feels like <Temperature {...feelsLikeTemperature} />
           </>
         )}
         <div>

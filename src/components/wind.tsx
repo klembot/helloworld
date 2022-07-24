@@ -53,8 +53,8 @@ export const Wind = (props: WindProps) => {
 
   return (
     <div className="wind">
-      <ArrowDown style={{ transform: `rotate(${props.direction.value}deg)` }} />
-      {direction} wind at {speed}
+      <ArrowDown style={{transform: `rotate(${props.direction.value}deg)`}} />
+      {direction} wind at&nbsp;<strong>{speed}</strong>
       {props.gust.value > 0 && <>, gusting {gust}</>}
     </div>
   );
