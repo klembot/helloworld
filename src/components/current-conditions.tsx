@@ -28,8 +28,11 @@ export const CurrentConditions = (props: CurrentConditionsProps) => {
     return <p style={{textAlign: 'center'}}>Loading current conditions...</p>;
   }
 
-  const feelsLikeTemperature =
-    data.properties.heatIndex ?? data.properties.windChill;
+  const feelsLikeTemperature = data.properties.heatIndex.value
+    ? data.properties.heatIndex
+    : data.properties.windChill.value
+    ? data.properties.windChill
+    : null;
 
   return (
     <div className="current-conditions">

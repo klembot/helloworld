@@ -4,18 +4,20 @@
 	padding: calc(var(--grid-size) * 2);
 }
 
+.app strong {
+	color: var(--color-strong);
+}
+
 .app.day {
 	background: linear-gradient(to bottom, var(--color-azure-3), var(--color-azure-4));
 	color: var(--color-azure-2);
-}
-
-.app.day strong {
-	color: white;
+	--color-strong: white;
 }
 
 .app.night {
 	background: linear-gradient(to bottom, var(--color-azure-5), var(--color-azure-6));
 	color: var(--color-azure-2);
+	--color-strong: var(--color-azure-1);
 }
 
 .global-overlay {

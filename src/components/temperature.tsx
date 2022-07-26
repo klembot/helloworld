@@ -13,7 +13,7 @@ export const Temperature = (props: TemperatureProps) => {
     case 'wmoUnit:degC':
       return (
         <span>
-          <strong>{Math.round(celsiusToFahrenheit(value))}</strong>&deg;
+          <strong>{Math.round(celsiusToFahrenheit(value))}&deg;</strong>
         </span>
       );
 

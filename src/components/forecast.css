@@ -7,6 +7,10 @@
 	text-align: center;
 }
 
+.forecast .title {
+	color: var(--color-strong);
+}
+
 .forecast .updated {
 	font-size: var(--font-small);
 	text-align: center;

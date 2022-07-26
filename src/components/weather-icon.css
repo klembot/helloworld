@@ -14,7 +14,7 @@
 
 .weather-icon .percent {
 	align-items: center;
-	color: hsla(0, 0%, 100%, 0.5);
+	color: var(--color-strong);
 	display: flex;
 	font-size: var(--font-extra-small);
 	font-weight: bold;
