@@ -2,3 +2,7 @@
 	align-items: center;
 	display: inline-flex;
 }
+
+.wind svg {
+	stroke: var(--color-strong);
+}
