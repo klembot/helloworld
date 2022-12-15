@@ -43,6 +43,7 @@ const iconMappings = {
     minus_ra: <CloudRain />,
     ovc: <Cloud />,
     ra: <CloudRain />,
+    rain: <CloudRain />,
     rain_showers: <CloudRain />,
     raip: <CloudHail />,
     ra_fzra: <CloudHail />,
