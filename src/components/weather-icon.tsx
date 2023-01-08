@@ -9,6 +9,7 @@ import {
   CloudLightningRain,
   CloudMoon,
   CloudRain,
+  CloudSleet,
   CloudSnow,
   CloudSun,
   Hurricane,
@@ -45,6 +46,7 @@ const iconMappings = {
     ra: <CloudRain />,
     rain: <CloudRain />,
     rain_showers: <CloudRain />,
+    rain_snow: <CloudSleet />,
     raip: <CloudHail />,
     ra_fzra: <CloudHail />,
     ra_sn: <CloudSnow />,
@@ -87,7 +89,9 @@ const iconMappings = {
     minus_ra: <CloudRain />,
     ovc: <Cloud />,
     ra: <CloudRain />,
+    rain: <CloudRain />,
     rain_showers: <CloudRain />,
+    rain_snow: <CloudSleet />,
     raip: <CloudHail />,
     ra_fzra: <CloudHail />,
     ra_sn: <CloudSnow />,
@@ -133,6 +137,11 @@ export const WeatherIcon = ({icon}: WeatherIconProps) => {
     }>(
       (result, iconKey) => {
         const [icon, percent] = iconKey.split(',');
+
+        if (!(icon in (iconMappings as any)[iconType])) {
+          console.error(`Don't know how to handle icon ${icon}`);
+        }
+
         const mappedIcon = (iconMappings as any)[iconType][icon] ?? (
           <QuestionCircle />
         );
